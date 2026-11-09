@@ -83,6 +83,11 @@ class ItemUpdate(SQLModel):
     description: str | None = Field(default=None, max_length=255)
 
 
+# Properties to receive on item ownership transfer
+class ItemTransfer(SQLModel):
+    new_owner_id: uuid.UUID
+
+
 # Database model, database table inferred from class name
 class Item(ItemBase, table=True):
     id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
